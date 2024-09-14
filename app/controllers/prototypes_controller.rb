@@ -1,5 +1,5 @@
 class PrototypesController < ApplicationController
-  before_action :authenticate_user!, except: [:new, :edit, :delete]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :delete]
   before_action :set_prototype, only: [:edit]
   before_action :verify_owner, only: [:edit]
   
