@@ -1,5 +1,6 @@
 class PrototypesController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :delete]
+  skip_before_action :authenticate_user!, only: [:index, :show]
   before_action :set_prototype, only: [:edit]
   before_action :verify_owner, only: [:edit]
   
@@ -23,7 +24,6 @@ class PrototypesController < ApplicationController
   def show
     @prototype = Prototype.find(params[:id])
     @comment = Comment.new
-    @comments = @prototype.comments.includes(:user)
   end
 
   def edit
